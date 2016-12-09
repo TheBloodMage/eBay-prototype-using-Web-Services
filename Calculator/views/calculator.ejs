@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title><%= title %></title>
+<script src='public/stylesheets/style.css'></script>
+
+<style type="text/css">
+.button_number {
+	width: 55px;
+	padding: 15px;
+}
+
+.button_operation {
+	width: 75px;
+	padding: 15px;
+}
+
+.calculator_button {
+	padding: 12px;
+}
+
+.calculator_body {
+	background: green;
+	width: 255px;
+	padding: 10px;
+	box-shadow: 5px 5px 5px #888888;
+	border-radius: 12px;
+}
+
+.output_screen_border {
+	border: 1px solid #ccc;
+	width: 250px;
+	height: 60px;
+	background: blue;
+}
+</style>
+
+<script
+	src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js">
+</script>
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js">
+</script>
+
+<script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+
+<!-- Loading the AngularJS file from /public/angularJS folder -->
+<script src="/angularjs/calculator.js"></script>
+
+</head>
+<body ng-app="calculator" ng-controller="calculator">
+
+	<form method="post">
+		<div class="calculator_body" name="calcBody">
+			<div class="output_screen_border" name="outputScreen">
+				<p name="output">
+					<b>{{output}}<br>={{calculationString}}
+					</b>
+				</p>
+			</div>
+
+			<div name="buttonBody">
+				<button name="number1" class="button_number" value="1"
+					ng-click='updateAnswer("1")'>1</button>
+				<button name="number2" class="button_number" value="2"
+					ng-click='updateAnswer("2")'>2</button>
+				<button name="number3" class="button_number" value="3"
+					ng-click='updateAnswer("3")'>3</button>
+				<button name="multiplication" class="button_operation" value="*"
+					ng-click='updateAnswer("*")'>*</button>
+				<br>
+				<button name="number4" class="button_number" value="4"
+					ng-click='updateAnswer("4")'>4</button>
+				<button name="number5" class="button_number" value="5"
+					ng-click='updateAnswer("5")'>5</button>
+				<button name="number6" class="button_number" value="6"
+					ng-click='updateAnswer("6")'>6</button>
+				<button name="substraction" class="button_operation" value="-"
+					ng-click='updateAnswer("-")'>-</button>
+				<br>
+				<button name="number7" class="button_number" value="7"
+					ng-click='updateAnswer("7")'>7</button>
+				<button name="number8" class="button_number" value="8"
+					ng-click='updateAnswer("8")'>8</button>
+				<button name="number9" class="button_number" value="9"
+					ng-click='updateAnswer("9")'>9</button>
+				<button name="division" class="button_operation" value="3"
+					ng-click='updateAnswer("/")'>/</button>
+				<br>
+				<button name="number10" class="button_number" value="+"
+					ng-click='updateAnswer("+")'>+</button>
+				<button name="number11" class="button_number" value="0"
+					ng-click='updateAnswer("0")'>0</button>
+				<button name="equal" class="button_number" value="="
+					ng-click='giveAnswer()'>=</button>
+				<button name="clear" class="button_operation" value="C"
+					ng-click='clearScreen()'>CLEAR</button>
+				<br>
+			</div>
+		</div>
+</body>
+</html>
