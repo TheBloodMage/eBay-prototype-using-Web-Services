@@ -4,9 +4,13 @@ import static com.mongodb.client.model.Filters.and;
 import static com.mongodb.client.model.Filters.eq;
 
 import org.bson.Document;
+import org.bson.conversions.Bson;
 
+import com.mongodb.DBObject;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
+import com.mongodb.QueryBuilder;
+import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 
@@ -20,12 +24,13 @@ public class boughtHistory {
 
 		MongoDatabase database = mongoClient.getDatabase("EbayDatabaseMongoDB");
 
-		MongoCollection<Document> collection = database.getCollection("bid");
-		System.out.println("product_id" + product_id + "username" + username);
+		MongoCollection<Document> collection = database.getCollection("bought");
+		
+		DBObject query = QueryBuilder.start("bought_product_price").lessThanEquals(7).and("bought_product_price").greaterThanEquals(7).get();
 
-		collection.deleteOne( eq("product_id", product_id));
+		FindIterable<Document> cursor = collection.find((Bson) query);
 	
-		System.out.println("YOUR BID ITEM HAS BEEN DELETED");
+		System.out.println("YOUR BOUGHT PRODUCT HISTORY ITEM HAS BEEN FETCHED");
 		return 1;
 
 	}

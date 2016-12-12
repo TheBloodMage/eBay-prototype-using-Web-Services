@@ -5,8 +5,10 @@ import static com.mongodb.client.model.Filters.eq;
 
 import org.bson.Document;
 
+import com.mongodb.BasicDBObject;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
+import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 
@@ -20,12 +22,13 @@ public class getAllProducts {
 
 		MongoDatabase database = mongoClient.getDatabase("EbayDatabaseMongoDB");
 
-		MongoCollection<Document> collection = database.getCollection("bid");
-		System.out.println("product_id" + product_id + "username" + username);
-
-		collection.deleteOne( eq("product_id", product_id));
+		MongoCollection<Document> collection = database.getCollection("products");
+		
+		BasicDBObject query = new BasicDBObject();
+		BasicDBObject fields = new BasicDBObject("_id", "1");
+		FindIterable<Document> cursor = collection.find(query);
 	
-		System.out.println("YOUR BID ITEM HAS BEEN DELETED");
+		System.out.println("YOUR PRODUCTS HAVE BEEN FETCHED");
 		return 1;
 
 	}

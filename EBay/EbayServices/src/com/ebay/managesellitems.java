@@ -20,12 +20,12 @@ public class managesellitems {
 
 		MongoDatabase database = mongoClient.getDatabase("EbayDatabaseMongoDB");
 
-		MongoCollection<Document> collection = database.getCollection("bid");
+		MongoCollection<Document> collection = database.getCollection("products");
 		System.out.println("product_id" + product_id + "username" + username);
 
 		collection.deleteOne( eq("product_id", product_id));
 	
-		System.out.println("YOUR BID ITEM HAS BEEN DELETED");
+		System.out.println("YOUR SELLING PRODUCT ITEM HAS BEEN DELETED");
 		return 1;
 
 	}

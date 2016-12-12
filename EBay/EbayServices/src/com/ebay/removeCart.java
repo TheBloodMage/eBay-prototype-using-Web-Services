@@ -20,12 +20,12 @@ public class removeCart {
 
 		MongoDatabase database = mongoClient.getDatabase("EbayDatabaseMongoDB");
 
-		MongoCollection<Document> collection = database.getCollection("bid");
+		MongoCollection<Document> collection = database.getCollection("cart");
 		System.out.println("product_id" + product_id + "username" + username);
 
 		collection.deleteOne( eq("product_id", product_id));
 	
-		System.out.println("YOUR BID ITEM HAS BEEN DELETED");
+		System.out.println("YOUR ITEM HAS BEEN REMOVED FROM CART");
 		return 1;
 
 	}
